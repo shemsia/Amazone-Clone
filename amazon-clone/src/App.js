@@ -5,6 +5,7 @@ import Category from "./Components/Category/Category";
 
 import Test1 from "./Components/test/Test1";
 import Test2 from "./Components/test/Test2";
+import Product from "./Components/Product/Product";
 
 function App() {
   return (
@@ -12,8 +13,7 @@ function App() {
       <Header />
       <CarouselEffect />
       <Category />
-      {/* <Test1 />
-      <Test2 /> */}
+      <Product />
     </div>
   );
 }
