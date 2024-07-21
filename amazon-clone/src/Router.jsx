@@ -6,7 +6,7 @@ import Payment from "./Pages/Payment/Payment";
 import Orders from "./Pages/Orders/Orders";
 import Cart from "./Pages/Cart/Cart";
 import Results from "./Pages/Results/Results";
-// import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
@@ -22,6 +22,7 @@ const Routing = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/category/:categoryName" element={<Results />} />
+        <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
