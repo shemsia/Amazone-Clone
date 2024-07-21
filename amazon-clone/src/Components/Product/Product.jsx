@@ -7,8 +7,7 @@ const Product = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
+    axios.get("https://fakestoreapi.com/products")
       .then((res) => {
         setProducts(res.data);
       })
