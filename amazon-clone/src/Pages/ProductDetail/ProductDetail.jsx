@@ -17,10 +17,12 @@ const [isLoading, setIsLoading]=useState(false)
       .get(`${productUrl}/products/${productId}`)
       .then((res) => {
         setproduct(res.data);
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
-        setIsLoading(false)
+        setIsLoading(false);
+        
       });
   }, [productId]);
   return (
