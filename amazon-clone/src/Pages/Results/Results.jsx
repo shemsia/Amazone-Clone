@@ -8,7 +8,7 @@ import ProductCard from "../../Components/Product/ProductCard";
 import Loader from "../../Components/Loader/Loader";
 function Results() {
   const { categoryName } = useParams();
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Results() {
       .get(`${productUrl}/products/category/${categoryName}`)
       .then((res) => {
         setResults(res.data);
-        isLoading(false);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -35,7 +35,14 @@ function Results() {
         ) : (
           <div className={classes.products_container}>
             {results?.map((product) => {
-              return <ProductCard key={product.id} product={product} />;
+              return (
+                <ProductCard
+                  key={product.id}
+                  renderAdd={true}
+                  product={product}
+                  renderDesc={false}
+                />
+              );
             })}
           </div>
         )}

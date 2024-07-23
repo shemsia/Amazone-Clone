@@ -6,31 +6,36 @@ import { productUrl } from "../../Api/endPoints";
 import ProductCard from "../../Components/Product/ProductCard";
 import Loader from "../../Components/Loader/Loader";
 function ProductDetail() {
- const { productId } = useParams();
+  const { productId } = useParams();
   const [product, setproduct] = useState({});
-const [isLoading, setIsLoading]=useState(false)
- 
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     axios
       .get(`${productUrl}/products/${productId}`)
       .then((res) => {
         setproduct(res.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        
       });
   }, [productId]);
   return (
     <LayOut>
-      {isLoading?(<Loader />):(<div>
-        <ProductCard product={product} />
-      </div>)}
-      
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+            <ProductCard product={product}
+              flex={true} 
+              renderDesc={true}
+              renderAdd={true}
+            />
+        </div>
+      )}
     </LayOut>
   );
 }

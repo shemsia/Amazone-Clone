@@ -33,7 +33,7 @@ const [isLoading, setIsLoading] = useState(false);
           <section className={classes.products_container}>
       {products &&
         products?.map((singleProduct) => (
-          <ProductCard key={singleProduct.id} product={singleProduct} />
+          <ProductCard key={singleProduct.id} renderAdd={true} product={singleProduct} />
         ))}
     </section>
         )

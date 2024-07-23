@@ -3,17 +3,30 @@ import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat.jsx";
 import classes from "./Product.module.css";
 import { Link } from "react-router-dom";
-function ProductCard({ product }) {
-  const { image, title, id, rating, price } = product;
+import { useContext } from "react";
+import { DataContext } from "../DataProvider/DataProvider";
+import { Type } from "../../Utility/action.type.js";
+function ProductCard({ product, flex,renderDesc,renderAdd }) {
+  const { image, title, id, rating, price, description } = product;
+  const [State,dispatch]=useContext(DataContext)
+  const addToCart = () => {
+    dispatch({
+    type:Type.ADD_TO_BASKET,
+item: {
+  image, title, id, rating, price, description
+}
+  })
+}
   const ratingValue = rating ? rating.rate : 0;
   const ratingCount = rating ? rating.count : 0;
   return (
-    <div className={classes.card_container}>
+    <div className={`${classes.card_container} ${flex?classes.product_flexed:''}`}>
       <Link to={`/products/${id}`}>
         <img src={image} alt="" className={classes.img_container} />
       </Link>
       <div>
         <h3>{title}</h3>
+        {renderDesc && <div style={{maxWidth:"500px"}}>{description}</div>}
         <div className={classes.rating}>
           {/* Rating */}
           <Rating value={ratingValue} precision={0.1} />
@@ -24,7 +37,12 @@ function ProductCard({ product }) {
           {/* Price */}
           <CurrencyFormat amount={price} />
         </div>
-        <button className={classes.button}>add to cart</button>
+        {
+          
+          renderAdd &&  <button className={classes.button} onClick={addToCart}>add to cart</button>
+}
+
+       
       </div>
     </div>
   );
