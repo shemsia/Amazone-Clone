@@ -1,14 +1,22 @@
-.container_order{
-    background-color: rgba(185, 205, 223, 0.911);
-padding: 30px;
-
+.container {
+  background-color: #efeeee;
+  padding: 30px;
 }
-.orders_container{
-    background-color: rgb(234, 234, 138);
-
-    padding: 20px;
+.orders__container {
+  background-color: #fff;
+  padding: 20px;
 }
-.orders_container h2{
-    border-bottom: 2px solid rgb(235, 161, 44);
-    padding: 20px;
+.orders__container h2 {
+  border-bottom: 2px solid var(--primary-shade);
+  padding: 20px;
+}
+.orders__container p {
+  padding: 12px;
+}
+
+.orders__container img {
+  width: 100px !important;
+}
+.orders__container div {
+  height: auto !important;
 }
