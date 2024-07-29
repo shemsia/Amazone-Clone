@@ -11,7 +11,8 @@ function Orders() {
 
   useEffect(() => {
     if (user) {
-      db.collection("users")
+      const unsubscribe = db
+        .collection("users")
         .doc(user.uid)
         .collection("orders")
         .orderBy("created", "desc")
@@ -24,10 +25,12 @@ function Orders() {
             }))
           );
         });
+
+      return () => unsubscribe(); // Clean up the subscription on component unmount
     } else {
       setOrders([]);
     }
-  }, []);
+  }, [user]);
 
   return (
     <LayOut>

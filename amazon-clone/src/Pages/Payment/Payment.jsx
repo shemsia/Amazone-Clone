@@ -75,11 +75,10 @@ function Payment() {
       setProcessing(false);
       navigate("/orders", { state: { msg: "you have placed new Order" } });
     } catch (error) {
-      console.log(error);
+      console.error("Payment error: ", error);
       setProcessing(false);
     }
   };
-
   return (
     <LayOut>
       {/* header */}
@@ -93,8 +92,8 @@ function Payment() {
           <h3>Delivery Address</h3>
           <div>
             <div>{user?.email}</div>
-            <div>123 React Lane</div>
-            <div>Chicago, IL</div>
+            <div>Nifas silk lafto</div>
+            <div>Addis Ababa, Ethiopia</div>
           </div>
         </div>
         <hr />
